@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!-- 
 Conquer Template
 http://www.templatemo.com/preview/templatemo_426_conquer
@@ -95,7 +96,7 @@ table.inner{border: 1px}
 <!-- header end -->
 <div class="clear"></div>
 <!-- service start -->
-<h3>STUDENT REGISTRATION FORM</h3>
+<h3> REGISTRATION FORM</h3>
 <form action="form.php" method="POST">
  
 <table align="center" cellpadding = "10">
