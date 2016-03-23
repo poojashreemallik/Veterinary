@@ -29,8 +29,8 @@
 <div id="header"><!-- header open -->
 
 <div class="tophead_right">
-<a href="login.jsp" class="loginlinks">Sign In</a>
-<a href="register.jsp" class="loginlinks">Register</a>   
+<a href="login.html" class="loginlinks">Sign In</a>
+<a href="register.html" class="loginlinks">Register</a>   
 </div>
 
 
@@ -87,7 +87,7 @@
                 <li><a href="en-contactothers.html">Sister Organizations</a></li>
             </ul>
 		</li>
-		<li><a href="kn-home.jsp">ಕನ್ನಡ‌</a></li>
+		<li><a href="kannada.html">ಕನ್ನಡ‌</a></li>
 	</ul>
 </div><!-- menu close -->
 <div class="clear"></div><!-- Clear Floating divs -->

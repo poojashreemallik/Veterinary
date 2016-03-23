@@ -29,8 +29,8 @@
 
 
 <div class="tophead_right">
-<a href="https://india.gov.in/user/login" class="loginlinks">Sign In</a>
-<a href="https://india.gov.in/user/register" class="loginlinks">Register</a>   
+<a href="login.html" class="loginlinks">Sign In</a>
+<a href="register.html" class="loginlinks">Register</a>   
 </div>
 
 
@@ -86,7 +86,7 @@
                 <li><a href="kn-contactothers.html">ಸೋದರ ಸಂಸ್ಥೆಗಳು</a></li>
             </ul>
 		</li>
-		<li><a href="en-home.jsp">English</a></li>
+		<li><a href="english.html">English</a></li>
 	</ul>
 </div><!-- menu close -->
 <div class="clear"></div><!-- Clear Floating divs -->

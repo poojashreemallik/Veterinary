@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><!-- html tag open -->
-<head><!-- head tag open -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
 <title>Department of Animal Husbandry &amp; Veterinary Services, Government of Karnataka</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -10,6 +12,9 @@
 <meta name="ROBOTS" content="index,follow,archive" />
 <link href="resources/en-stylesheet.css" rel="stylesheet" type="text/css" />
 <link href="resources/style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="resources/css/tcal.css" />
+<script type="text/javascript" src="resources/js/tcal.js"></script> 
 
 <script type="text/javascript" src="resources/jquery_min.js"></script>
 <script type="text/javascript" src="resources/fadeslideshow.js">
@@ -33,7 +38,7 @@
 </div>
 
 
-<h1>RURAL E-VET CLINIC SADA</h1>
+<h1>RURAL E-VET CLINIC</h1>
 <div class="clear"></div><!-- Clear Floating divs -->
 <div id="menu"><!-- menu open -->
 	<ul>
@@ -86,56 +91,137 @@
                 <li><a href="en-contactothers.html">Sister Organizations</a></li>
             </ul>
 		</li>
-		<li><a href="kannada.html">ಕನ್ನಡ‌</a></li>
+		<li><a href="kannada.html">ಕನ್ನಡ</a></li>
 	</ul>
 </div><!-- menu close -->
 <div class="clear"></div><!-- Clear Floating divs -->
 <div id="fadeshow"></div>
 </div><!-- header close -->
-<!-- <div id="nic" class="textJustify">content open
-<p>
-<img src="images/New.gif" width="48" height="24" alt="" border="0"/>
-<a href="/ahvs-website/pdf/VO-Notification-gazette.doc" target="_blank">DRC Notification (VETERINARY OFFICERS) </a> |
-<a href="/ahvs-website/pdf/VO-Notification-gazette.doc" target="_blank">VO-Notification-gazette </a> |
-<a href="/ahvs-website/pdf/TELEPHONE-Number-DDsandADs.pdf" target="_blank">TELEPHONE Numbers of all DD's and AD's </a> |<a href="/ahvs-website/pdf/Re-organisation-annexure.xls" target="_blank">Re- organisation Annexure </a> | 
-<a href="/ahvs-website/pdf/FMD vaccination Schedule for-2013-14.rar" target="_blank">"FMD vaccination  schedule  for 2013-14" </a>| <a href="/ahvs-website/pdf/Recruitment-PROVISIONAL LIST OF VETERINARY OFFICERS.pdf" target="_blank">Recruitment : "Provisional List of Veterinary Officers" </a>| <a href="/ahvs-website/pdf/RFD 2012-13 TARGETS.pdf" target="_blank">AHVS-Result Frame Document 2012-13 : Targets </a>| <a href="/ahvs-website/pdf/2014-10-31.rar" target="_blank">Panchayat raj committee Format 1 to 15 </a></p>
-<div class="tab floatRight">
-<div class="floatRight textCenter links">
-<a href="en-govtholidays.html">Declared Govt. Holidays<br />of the Year 2012</a>
-<br /><br /><a href="http://www.india.gov.in" target="_blank"><img src="images/indiaportal.gif" title="National Portal of India" alt="National Portal of India" /></a>
+<div align="center">
+<br><br><br>
+<h3> REGISTRATION FORM</h3>
+		
+		<form:form action="createUser.html" method="post" >
+		<table >
+		<hr>
+		 
+		<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		</tr>
+		<!----- First Name ---------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="fname">FIRST NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="fname" required="required"/></td>
+			
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<!-- <tr><td>&nbsp;</td><td>(max 30 characters a-z and A-Z)</td></tr> -->
+		
+		
+		<!----- Last Name ---------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="lname">LAST NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="lname" required="required"/></td>
+		
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		 
+		
+		<!----- Date Of Birth -------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="dob">DATE OF BIRTH :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="dob" class="tcal" value="" required="required"/></td>
+		</tr>
+		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		
+		<tr>
+			<td align="right"><form:label path="adhaarno">ADHAR NUMBER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="adhaarno" required="required"/></td>
+		</tr>
+		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		
+		<!----- Email Id ---------------------------------------------------------->
+		
+		<tr>
+			<td align="right"><form:label path="email">EMAIL ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="email" required="required"/></td>
+		</tr>
+		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		
+		<!----- Mobile Number ---------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="phone">MOBILE NUMBER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="phone" placeholder="mobile num" required="required"/></td>
+		
+		</tr> 
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		
+		<!----- Gender ----------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="gender">GENDER :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:radiobutton path="gender" value="M"/>Male <form:radiobutton path="gender" value="F"/>Female </td>
+		</tr>
+		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		 
+		<!----- Address ---------------------------------------------------------->
+		<tr>
+			<td align="right" valign="top"><form:label path="address">ADDRESS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:textarea path="address" rows="5" cols="30" required="required"/></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		
+		<!----- Qualification---------------------------------------------------------->
+		<tr>
+			<td align="right"><form:label path="specialization">SPECIALIZATION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="specialization" required="required"/></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		</tr>
+		
+		
+		
+		<!----- Submit and Reset ------------------------------------------------->
+		<tr>
+		<td colspan="2" align="center">
+		<input type="submit" value="Submit">
+		<input type="reset" value="Reset">
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		</tr>
+		</table>
+		
+	</form:form>
 </div>
-<div class="textLeft links">
-Useful Websites
-<ul>
-<li>1. <a href="http://www.kvcbangalore.com" target="_blank">KVC</a></li>
-<li>2. <a href="http://www.kvafsu.kar.nic.in" target="_blank">KVAFSU</a></li>
-<li>3. <a href="http://www.iahvb.co.in" target="_blank">IAH&amp;VB</a></li>
-<li>4. <a href="http://www.kmfnandini.coop" target="_blank">KMF</a></li>
-<li>5. <a href="http://www.uasbangalore.edu.in/" target="_blank">UAS, Bangalore</a></li>
-</ul>
 </div>
-</div>
-<div class="tab">
-
-<div class="floatRight textLeft links">
-<div class="icon">
-
-<div><a href="en-exoticelitebreeds.html"><img src="images/exotic_breed.jpg" alt="Important Elite Breeds" title="Important Elite Breeds" />
-Important Elite Breeds</a></div>
-</div>
-</div>
-<div class="icon">
-<div><a href="en-localelitebreeds.html"><img src="images/local_breed.jpg" alt="Elite Breeds of Karnataka" title="Elite Breeds of Karnataka" />
-Elite Breeds of Karnataka</a></div>
-</div>
-</div>
-<div class="clear"></div>Clear Floating divs
-<div class="disclaimer">Contents owned, maintained and updated by Department of Animal Husbandry &amp; Veterinary Services, Government of Karnataka. All complaints or queries or comments regarding any contents on this website may be sent to bn@gahv@s@ka@r.ni@c.in or di@r-ah@@ka@r.ni@c.in.</div>
-</div>content close
-<div id="footer" class="textCenter">footer open
-Website Designed, Developed &amp; Maintained by<br />
-Department of Animal Husbandry &amp; Veterinary Services, Bangalore
-</div>footer close-->
 </div><!-- wrapper close --> 
 </div><!-- align webpage center close -->
 </body><!-- body tag close -->

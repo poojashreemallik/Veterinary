@@ -1,9 +1,8 @@
 package org.vet.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
 import org.vet.entity.User;
+import org.vet.service.UserService;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	UserService userservice;
 	
 	/*@RequestMapping(value = "/login")
 	@Override
@@ -59,32 +61,40 @@ public class UserController {
 		return new ModelAndView("register", "command", new User());
     }
 	
-	@RequestMapping("/login")
-	public String login(@RequestParam("emailId") String id,@RequestParam("password") String password,
+	@RequestMapping("/createUser")
+	public ModelAndView create(User u)
+	{
+		String password="abcd";
+		userservice.create(u, password);
+		return new ModelAndView("login", "command", new User());
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(@RequestParam("email") String id,@RequestParam("password") String password,
 			@ModelAttribute("user") User user,HttpSession session,BindingResult bindingResult,
 			ModelAndView modelandView)
 	{
-		/*String role=null;
-		if((role=userService.login(id,password))!=null)*/
-		if("admin".equals(user.getEmail()) && "admin".equals(user.getPassword()))
+		String role=null;
+		
+		if((role=userservice.login(id,password))!=null)
 		{
 			session.setAttribute("USERID", id);
 			modelandView.addObject("command", new User());
-			/*if("student".equals(role))
+			if("doctor".equals(role))
 			{
-				return "redirect:en-home";
+				return "en-home";
 			}
 			else
 			{
-				return "redirect:kn-home";
-			}*/
-			return "redirect:en-home";
+				return "kn-home";
+			}
+			
 			
 		}
 		else
 		{
 			bindingResult.reject("Message", "Invalid User Id or Password");
-			return "redirect:login";
+			return "login";
 		}
 		
 	}

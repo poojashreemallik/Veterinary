@@ -11,6 +11,7 @@
 	<a href="english.html">English</a>
 	<a href="kannada.html">Kannada</a>
 	<a href="login.html">Login</a>
+	<a href="register.html">Register</a>
 	
 </body>
 </html>
