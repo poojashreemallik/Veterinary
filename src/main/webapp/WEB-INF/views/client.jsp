@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- html tag open -->
+<head><!-- head tag open -->
 <title>Department of Animal Husbandry &amp; Veterinary Services, Government of Karnataka</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -12,9 +11,6 @@
 <meta name="ROBOTS" content="index,follow,archive" />
 <link href="resources/en-stylesheet.css" rel="stylesheet" type="text/css" />
 <link href="resources/style.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" type="text/css" href="resources/css/tcal.css" />
-<script type="text/javascript" src="resources/js/tcal.js"></script> 
 
 <script type="text/javascript" src="resources/jquery_min.js"></script>
 <script type="text/javascript" src="resources/fadeslideshow.js">
@@ -38,7 +34,7 @@
 </div>
 
 
-<h1>RURAL E-VET CLINIC</h1>
+<h1>RURAL E-VET CLINIC SADA</h1>
 <div class="clear"></div><!-- Clear Floating divs -->
 <div id="menu"><!-- menu open -->
 	<ul>
@@ -91,28 +87,31 @@
                 <li><a href="en-contactothers.html">Sister Organizations</a></li>
             </ul>
 		</li>
-		<li><a href="kannada.html">ಕನ್ನಡ</a></li>
+		<li><a href="kannada.html">ಕನ್ನಡ‌</a></li>
 	</ul>
+	
 </div><!-- menu close -->
 <div class="clear"></div><!-- Clear Floating divs -->
 <div id="fadeshow"></div>
 </div><!-- header close -->
-<div align="center">
-<br><br><br>
+
+
+	<div align="center">
+<br /><br /><br />
 <h3> REGISTRATION FORM</h3>
 		
-		<form:form action="createUser.html" method="post" >
+		<form:form action="createClient.html" method="post" >
 		<table >
-		<hr>
+		
 		 
 		<tr>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		</tr>
-		<!----- First Name ---------------------------------------------------------->
+		<!----- Farmer Name ---------------------------------------------------------->
 		<tr>
-			<td align="right"><form:label path="fname">FIRST NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:input path="fname" required="required"/></td>
+			<td align="right"><form:label path="farmerName">FATHER NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="farmerName" required="required"/></td>
 			
 		</tr>
 		<tr>
@@ -121,30 +120,10 @@
 		<!-- <tr><td>&nbsp;</td><td>(max 30 characters a-z and A-Z)</td></tr> -->
 		
 		
-		<!----- Last Name ---------------------------------------------------------->
-		<tr>
-			<td align="right"><form:label path="lname">LAST NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:input path="lname" required="required"/></td>
-		
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		</tr>
-		 
-		
-		<!----- Date Of Birth -------------------------------------------------------->
-		<tr>
-			<td align="right"><form:label path="dob">DATE OF BIRTH :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:input path="dob" class="tcal" value="" required="required"/></td>
-		</tr>
 		
 		<tr>
-		<td>&nbsp;</td>
-		</tr>
-		
-		<tr>
-			<td align="right"><form:label path="adhaarno">ADHAR NUMBER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:input path="adhaarno" required="required"/></td>
+			<td align="right"><form:label path="adhaarnumber">ADHAR NUMBER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
+			<td align="left"><form:input path="adhaarnumber" required="required"/></td>
 		</tr>
 		
 		<tr>
@@ -172,15 +151,6 @@
 		<td>&nbsp;</td>
 		</tr>
 		
-		<!----- Gender ----------------------------------------------------------->
-		<tr>
-			<td align="right"><form:label path="gender">GENDER :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:radiobutton path="gender" value="M"/>Male <form:radiobutton path="gender" value="F"/>Female </td>
-		</tr>
-		
-		<tr>
-		<td>&nbsp;</td>
-		</tr>
 		 
 		<!----- Address ---------------------------------------------------------->
 		<tr>
@@ -189,15 +159,6 @@
 		</tr>
 		<tr>
 		<td>&nbsp;</td>
-		
-		<!----- Qualification---------------------------------------------------------->
-		<tr>
-			<td align="right"><form:label path="specialization">SPECIALIZATION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form:label></td>
-			<td align="left"><form:input path="specialization" required="required"/></td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 		</tr>
 		
 		
@@ -205,8 +166,8 @@
 		<!----- Submit and Reset ------------------------------------------------->
 		<tr>
 		<td colspan="2" align="center">
-		<input type="submit" value="Submit">
-		<input type="reset" value="Reset">
+		<input type="submit" value="Submit"/>
+		<input type="reset" value="Reset"/>
 		</td>
 		</tr>
 		<tr>
@@ -221,8 +182,13 @@
 		
 	</form:form>
 </div>
-</div>
+	
+<!-- 
+<div id="footer" class="textCenter">footer open
+Website Designed, Developed &amp; Maintained by<br />
+Department of Animal Husbandry &amp; Veterinary Services, Bangalore
+</div>footer close-->
 </div><!-- wrapper close --> 
-
+</div><!-- align webpage center close -->
 </body><!-- body tag close -->
 </html><!-- html tag close -->

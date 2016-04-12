@@ -1,8 +1,20 @@
 package org.vet.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="USER_PROFILE")
 public class User 
 {
-
+	@Id
+	@GeneratedValue
+	@Column(name = "USER_ID")
+	private int user_id;
+	
 	private String email;
 	private String password;
 	private String role;
@@ -107,6 +119,20 @@ public class User
 		this.email = email;
 		this.password = password;
 	
+	}
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", role="
+				+ role + ", fname=" + fname + ", lname=" + lname + ", gender="
+				+ gender + ", dob=" + dob + ", adhaarno=" + adhaarno
+				+ ", phone=" + phone + ", address=" + address
+				+ ", specialization=" + specialization + "]";
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	

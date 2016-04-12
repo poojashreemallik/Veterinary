@@ -1,26 +1,22 @@
 package org.vet.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.vet.db.UserDAO;
+import java.util.ArrayList;
+
+import org.vet.entity.Case;
+import org.vet.entity.Client;
+import org.vet.entity.Farmer;
 import org.vet.entity.User;
 
-@Service
-public class UserService {
-
-	@Autowired
-	UserDAO userDAO;
+public interface UserService {
 	
-	public int create(User s, String password) 
-	{
-		return userDAO.create(s, password);	
-	}
+	public void create(User u);
+	public String login(String name,String password);
 	
-	public String login(String name,String password)
-	{
-		return userDAO.login(name, password);
-	}
+	public boolean createClient(Client client);
+	public ArrayList<Client> getClientlist();
 	
-	
+	public boolean createCase(Case client,int id);
+	public ArrayList<Case> getCaselist();
+	public ArrayList<Farmer> getCasedetails();
 
 }

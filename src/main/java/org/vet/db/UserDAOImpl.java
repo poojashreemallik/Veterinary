@@ -4,24 +4,52 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.vet.entity.Case;
+import org.vet.entity.Client;
+import org.vet.entity.Farmer;
 import org.vet.entity.User;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
 	
 	private static final String sql="select role from user where username=? and password=?";
-
+	private static final String GETCLIENTSLIST_SQL="select client_id,farmername from client";
 	private static String CREATE_SQL="insert into user_profile(fname,lname,gender,dob," +
 			                         "adharnumber,phone,address,email,specialization) values(?,?,?,?,?,?,?,?,?)";
 	private static String USER_SQL="insert into user(username,password,role) values(?,?,?)";
-	
+	private static String CREATECLIENT_SQL="insert into client(farmername,adhaarnumber,phone,address,email) values(?,?,?,?,?)";
+	private static String CREATECASE_SQL="insert into vet_case(description,symptoms,status,client_id) values(?,?,?,?)";
+	private static final String GETCASELIST_SQL="select case_id,status from vet_case";
 	
 	@Autowired
 	private DBConnectionManager dbconnectionManager;
 	
-	public int create(User u,String password)
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public UserDAOImpl() {
+			
+		}
+	
+	public UserDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	@Override
+	@Transactional
+	public void create(User u)
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(u);
+	}
+	
+	
+	/*public int create(User u,String password)
 	{
 		Connection conn=dbconnectionManager.getConnection();
 		int i=0,n=0,key=0;
@@ -71,7 +99,7 @@ public class UserDAOImpl implements UserDAO{
 			}
 		}
 		return key;
-	}
+	}*/
 			
 
 	
@@ -100,6 +128,128 @@ public class UserDAOImpl implements UserDAO{
 		return role;
 	}
 
+	@Override
+	public boolean createClient(Client c) {
+		
+		Connection conn=dbconnectionManager.getConnection();
+		int i=0;
+		
+		
+			
+			try {
+				PreparedStatement ps=conn.prepareStatement(CREATECLIENT_SQL);
+				ps.setString(1, c.getFarmerName());
+				ps.setString(2, c.getAdhaarnumber());
+				ps.setString(3, c.getPhone());
+				ps.setString(4, c.getAddress());
+				ps.setString(5, c.getEmail());
+				i=ps.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+		return (i>0);
+	}
 
+
+	@Override
+	public ArrayList<Client> getClientlist() {
+		Connection conn=dbconnectionManager.getConnection();
+		ResultSet rs;
+		ArrayList<Client> list=new ArrayList<Client>();	
+				try {
+					PreparedStatement ps=conn.prepareStatement(GETCLIENTSLIST_SQL);
+					rs=ps.executeQuery();
+					while(rs!=null && rs.next())
+					{
+						int id=rs.getInt(1);
+						String name=rs.getString(2);
+						Client c=new Client(id, name);
+						list.add(c);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(list);
+		return list;
+	}
+
+
+	@Override
+	public boolean createCase(Case c,int id) {
+		
+		Connection conn=dbconnectionManager.getConnection();
+		int i=0;
+		
+		
+			
+			try {
+				PreparedStatement ps=conn.prepareStatement(CREATECASE_SQL);
+				ps.setString(1, c.getDescription());
+				ps.setString(2, c.getSymptoms());
+				ps.setString(3, "new");
+				ps.setInt(4, id);
+				i=ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+		return (i>0);
+	}
+
+
+	@Override
+	public ArrayList<Case> getCaselist() {
+		
+		Connection conn=dbconnectionManager.getConnection();
+		ResultSet rs;
+		ArrayList<Case> list=new ArrayList<Case>();	
+				try {
+					PreparedStatement ps=conn.prepareStatement(GETCASELIST_SQL);
+					rs=ps.executeQuery();
+					while(rs!=null && rs.next())
+					{
+						int id=rs.getInt(1);
+						String status=rs.getString(2);
+						Case c=new Case(id, status);
+						list.add(c);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(list);
+		return list;
+	}
+
+
+	@Override
+	public ArrayList<Farmer> getCasedetails() {
+		Connection conn=dbconnectionManager.getConnection();
+		ResultSet rs;
+		/*ArrayList<Farmer> list=new ArrayList<Farmer>();	
+				try {
+					PreparedStatement ps=conn.prepareStatement(GETCASEDETAILS_SQL);
+					rs=ps.executeQuery();
+					while(rs!=null && rs.next())
+					{
+						int id=rs.getInt(1);
+						String status=rs.getString(2);
+						Case c=new Case(id, status);
+						list.add(c);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(list);*/
+		return null;
+	}
 
 }
